@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block title %} Home Page {% endblock %} 
+{% block content %}
+<h1 class="text-center text-3xl font-bold">Welcome to new Screen</h1>
+
+<div class="grid grid-cols-3 gap-4 m-4">
+  {% for create in creates %}
+  <div class="bg-blue-800 p-5 rounded">
+    <img
+      class="rounded shadow-lg"
+      src="{{ create.image.url }}"
+      alt="{{ create.name }}"
+    />
+    <div class="flex flex-col items-center gap-3">
+      <h3 class="text-2xl text-white font-bold">{{ create.name }}</h3>
+      <a href="{% url 'create_detail' create.id %}"
+        ><button
+          type="button"
+          class="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          {{create.type}} - {{create.id}}
+        </button></a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
